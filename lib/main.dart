@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_app/test_screen.dart';
+import 'package:todo_app/test_screen2.dart';
 
 import 'common/show_model.dart';
 
@@ -70,6 +71,12 @@ class HomePage extends StatelessWidget {
                     CupertinoIcons.add,
                   ),
                 ),
+                IconButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => TestScreen2()));
+                    },
+                    icon: Icon(CupertinoIcons.search))
               ],
             ),
           )
