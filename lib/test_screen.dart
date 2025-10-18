@@ -21,11 +21,17 @@ class TestScreen extends ConsumerWidget {
         children: [
           ElevatedButton(
             onPressed: () {
-              ref.read(countProvider.notifier).state = count - 2;
+              ref.read(countProvider.notifier).state = count + 2;
             },
             child: Text('countUp'),
           ),
           Text(count.toString()),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('戻る'),
+          ),
         ],
       ),
     );
