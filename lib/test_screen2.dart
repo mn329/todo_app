@@ -19,10 +19,11 @@ class TestScreen2 extends ConsumerWidget {
           Text(count.toString()),
           // カウントダウンボタン
           ElevatedButton(
-              onPressed: () {
-                ref.read(countDownProvider.notifier).state--;
-              },
-              child: Text('countDown')),
+            onPressed: () {
+              ref.read(countDownProvider.notifier).state--;
+            },
+            child: Text('countDown'),
+          ),
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context);
