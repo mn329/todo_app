@@ -112,6 +112,7 @@ class HomePage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8))),
                     // ボタンを押したときにモーダルボトムシート(下から飛び出る)を表示
                     onPressed: () => showModalBottomSheet(
+                        backgroundColor: Colors.transparent,
                         // trueは高さを画面の半分以上の高さに合わせる。falseは最大でも画面の半分の高さにする
                         isScrollControlled: true,
                         shape: RoundedRectangleBorder(

@@ -17,15 +17,15 @@ class RadioWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final radio = ref.watch(radioProvider);
     return Material(
+      // 背景色を透明に設定
+      color: Colors.transparent,
       child: Theme(
         data: ThemeData(unselectedWidgetColor: categColor),
         child: RadioListTile(
           activeColor: categColor,
           // リストのデフォルトの余白を削除
           contentPadding: EdgeInsets.zero,
-          title:
-              // LRNの位置を左にずらす
-              Transform.translate(
+          title: Transform.translate(
             offset: Offset(-22, 0),
             child: Text(
               titleRadio,
