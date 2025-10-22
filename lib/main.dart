@@ -13,6 +13,11 @@ void main() async {
   runApp(
     const ProviderScope(
       child: MyApp(),
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(),
+      home: const HomePage(),
     ),
   );
 }
@@ -27,6 +32,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(),
       // 存在しないHomePageではなく、MyHomePageを呼び出す
       home: MyHomePage(),
+    return Scaffold(
+      backgroundColor: Colors.grey.shade200,
+      appBar: AppBar(
+        title: const Text('Home Page'),
+      ),
     );
   }
 }
