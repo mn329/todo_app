@@ -52,7 +52,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCcA1WvKGuJoA2NotTpNgm_coPqhbJuIvM',
-    appId: '1:106073751117:android:d8edbc4118e8211a626604',
+    appId: '1:106073751117:android:17b22a9f40c8381e626604',
     messagingSenderId: '106073751117',
     projectId: 'todo-app-5f039',
     storageBucket: 'todo-app-5f039.firebasestorage.app',
@@ -60,11 +60,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDYZXBfZ46Qcx4g_aWOqcN8jF9w-Xrjkp4',
-    appId: '1:106073751117:ios:2ba8716f988b6770626604',
+    appId: '1:106073751117:ios:27a62e378263fce5626604',
     messagingSenderId: '106073751117',
     projectId: 'todo-app-5f039',
     storageBucket: 'todo-app-5f039.firebasestorage.app',
-    iosBundleId: 'com.example.todoApp',
+    iosBundleId: 'com.example.todoApp.RunnerTests',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -85,4 +85,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'todo-app-5f039.firebasestorage.app',
     measurementId: 'G-6ENQ6KKL7P',
   );
+
 }

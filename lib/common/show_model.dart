@@ -4,21 +4,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:todo_app/constants/app_style.dart';
 import 'package:gap/gap.dart';
+import 'package:todo_app/model/todo_model.dart';
 import 'package:todo_app/provider/date_time_provider.dart';
 import 'package:todo_app/provider/radio_provider.dart';
+import 'package:todo_app/provider/servise_provider.dart';
 import 'package:todo_app/widget/datetime_widget.dart';
 import 'package:todo_app/widget/radio_widget.dart';
 import '../widget/textfield_widget.dart';
 
 class AddNewTaskModel extends ConsumerWidget {
-  const AddNewTaskModel({
+  AddNewTaskModel({
     super.key,
   });
-
+  final titleController = TextEditingController();
+  final descriptionController = TextEditingController();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final dateProv = ref.watch(dateProvier);
-    final timeProv = ref.watch(timeProvier);
+    final dateProv = ref.watch(dateProvider);
+    final timeProv = ref.watch(timeProvider);
     return Container(
       // 高さを画面の85%に設定
       padding: EdgeInsets.all(30),
@@ -51,14 +54,22 @@ class AddNewTaskModel extends ConsumerWidget {
             style: AppStyle.headhingOne,
           ),
           const Gap(6),
-          TextFieldWidget(hintText: 'add task name.', maxLine: 1),
+          TextFieldWidget(
+            hintText: 'add task name.',
+            maxLine: 1,
+            txtController: titleController,
+          ),
           const Gap(12),
           Text(
             'Discription',
             style: AppStyle.headhingOne,
           ),
           const Gap(6),
-          TextFieldWidget(hintText: 'add Discriptions.', maxLine: 5),
+          TextFieldWidget(
+            hintText: 'add Discriptions.',
+            maxLine: 5,
+            txtController: descriptionController,
+          ),
           const Gap(12),
           Text(
             'Category',
@@ -113,7 +124,7 @@ class AddNewTaskModel extends ConsumerWidget {
                   if (getValue != null) {
                     final format = DateFormat('yyyy/MM/dd');
                     ref
-                        .read(dateProvier.notifier)
+                        .read(dateProvider.notifier)
                         .update((state) => format.format(getValue));
                   }
                 },
@@ -130,7 +141,7 @@ class AddNewTaskModel extends ConsumerWidget {
                     initialTime: TimeOfDay.now(),
                   );
                   if (getTime != null) {
-                    ref.read(timeProvier.notifier).update(
+                    ref.read(timeProvider.notifier).update(
                           (state) => getTime.format(context),
                         );
                   }
@@ -170,7 +181,32 @@ class AddNewTaskModel extends ConsumerWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       padding: EdgeInsets.symmetric(vertical: 12)),
-                  onPressed: () {},
+                  onPressed: () {
+                    final getRadioValue = ref.read(radioProvider);
+                    String category = '';
+                    switch (getRadioValue) {
+                      case 1:
+                        category = 'Learning';
+                        break;
+                      case 2:
+                        category = 'Working';
+                        break;
+                      case 3:
+                        category = 'General';
+                        break;
+                      default:
+                    }
+                    ref.read(serviseProvider).addNewTask(
+                          TodoModel(
+                            titleTask: titleController.text,
+                            description: descriptionController.text,
+                            category: category,
+                            dateTask: ref.read(dateProvider),
+                            timeTask: ref.read(timeProvider),
+                          ),
+                        );
+                    print('data is saving');
+                  },
                   child: Text('Create'),
                 ),
               ),
