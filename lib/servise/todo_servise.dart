@@ -16,4 +16,14 @@ class TodoServise {
       print("🚨 データ追加中にエラーが発生しました: $e");
     }
   }
+
+  // checked修正
+  void updateTask(String? docId, bool? valueUpdate) {
+    todocollection.doc(docId).update({'isDone': valueUpdate});
+  }
+
+  // 削除
+  void deleteTask(String? docId) {
+    todocollection.doc(docId).delete();
+  }
 }

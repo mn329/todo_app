@@ -203,9 +203,14 @@ class AddNewTaskModel extends ConsumerWidget {
                             category: category,
                             dateTask: ref.read(dateProvider),
                             timeTask: ref.read(timeProvider),
+                            isDone: false,
                           ),
                         );
                     print('data is saving');
+                    titleController.clear();
+                    descriptionController.clear();
+                    ref.read(radioProvider.notifier).update((state) => 0);
+                    Navigator.pop(context);
                   },
                   child: Text('Create'),
                 ),
