@@ -127,7 +127,7 @@ class CardTodoListWidget extends ConsumerWidget {
             ],
           ),
         );
-      }, // ここを `)` から `}` に変更
+      },
     );
   }
 }

@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'ToDo App',
       theme: ThemeData(),
-      // 存在しないHomePageではなく、MyHomePageを呼び出す
       home: MyHomePage(),
     );
   }
